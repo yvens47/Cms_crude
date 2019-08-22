@@ -1,0 +1,404 @@
+/*
+#35578F
+5F787F
+B5C1CD
+5D6755
+A77D5A
+*/
+
+html, body{
+
+
+}
+
+body{
+
+    /*height: 100%;*/
+    /* background-color: #B5C1CD;*/
+    margin:0;
+    font-family: 'Lato', sans-serif;
+
+}
+.center{
+    float:none;
+    margin: 0 auto;
+}
+
+.display-4{
+    margin-top: 45px;
+}
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.wrapper{
+    min-height: 95vh;
+    padding: 20px; 
+    overflow: auto;
+
+
+
+}
+.main_area_tpm{
+    margin-top: 60px;
+    padding: 0;
+
+
+}
+.wrapper-login{
+
+    min-height: 80%;
+    min-width: 100%;
+    background: #A77D5A;
+    padding: 100px;  
+
+    background-position: top;
+    background-image: linear-gradient(to top right,rgba(36, 162, 45, 0.90),rgba(8, 41, 74, 0.8)),url(Images/beach-dawn-dusk-2421607.jpg);
+    background-position: center;
+    background-size: cover;
+    background-position: center;
+    
+    
+
+
+}
+
+.form_wrapper {
+
+    margin-top: 10%;
+    padding-top: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    margin-left: auto;
+    
+}
+.form_wrapper h1{
+    color: white;
+    font-weight:bold;
+    font-size: 30px
+}
+
+
+.form_wrapper input {
+    background: transparent;
+    color: #b5b9b7;
+    border: solid #ffffff42 1px;
+    margin-top: 10px;
+    /* background: none; */
+}
+.form_wrapper input:focus {
+    background: transparent;
+    border: solid #ffffff42 1px;
+    color: white;
+    margin-top: 10px;
+    /* background: none; */
+    background-color: rgba(95, 120, 127, 0.59);
+}
+
+.form_wrapper-2 {
+
+    margin-top: 20%;
+    padding-top: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    margin-left: auto;
+    
+}
+.form_wrapper-2 input {
+    background: transparent;
+    color: #b5b9b7;
+    border: solid #ffffff42 1px;
+    margin-top: 10px;
+    /* background: none; */
+}
+.form_wrapper-2 input:focus {
+    background: transparent;
+    border: solid #ffffff42 1px;
+    color: white;
+    margin-top: 10px;
+    /* background: none; */
+    background-color: rgba(95, 120, 127, 0.59);
+}
+.bg-dark-header-2 {
+    background-color: #566063 !important;
+}
+
+.footer {
+    background: #35578F;
+    min-height: 5%;
+    border-top: 1px solid;
+
+
+}
+
+
+button.btn.btn-sm.btn-primary.btn-block {
+    margin-top: 10px;
+}
+
+.jumbotron {
+    background: #5F787F;
+    background: linear-gradient(to top right, #727570b8,#c6cfd2f5), url(Images/boulders-bridge-cloud.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: padding-box;
+    height: auto;
+    overflow: auto;
+    margin-top: -10px;
+    color: #dee5ec;
+    border-radius: 0;
+}
+.jumbotron h1{
+    color:white;
+    font-weight: bold;
+}
+
+.feature {
+    width: 100%;
+    background: #5D6755;
+    height: auto;
+    padding: 15px 15px;
+    border-bottom: solid 1px grey;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+.feature h2 {
+    color: #A77D5A;
+    font-weight: bolder;
+    font-style: oblique;
+    font-family: none;
+}
+.feature video {
+    margin-top: -20px;
+    /* border: solid; */
+    padding: 0;
+}
+.btn-primary-cs{
+    color: #fff;
+    background-color: #b5c1cd;
+    border-color: #b5c1cd;
+}
+
+
+
+.articles {
+    text-align: left;
+}
+
+.post {
+    border-bottom: solid 1px #B5C1CD;
+    margin-bottom: 5px;
+    background: white;
+
+    height: auto;
+    overflow: auto;
+}
+
+.post:hover{
+    border-bottom: solid 1px grey;
+}
+
+.ptitle {
+    color: #4c4a4a;
+    font-size: 30px;
+}
+
+.ptitle a {
+    color: #4c4a4a;
+}
+.ptitle a:hover {
+    color: #4c4a3e;
+    text-decoration: none;
+}
+
+.pimg {
+    border: solid 1px #B5C1CD;
+    padding: 3px;
+    /* float: left; */
+    width: 40%;
+    margin: 5px 10px 10px 0;
+}
+
+
+
+.register_form {
+    margin-top: 30%;
+}
+
+/* home .php  */
+.sidebar {
+    background: white;
+    border-right: solid 1px #eee;
+    min-height: 100%;
+    border-right: solid 1px #5D6755;
+    width: 30vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-top: 70px;
+}
+
+.full_screen {
+background: linear-gradient(45deg, gainsboro, #00000005), white;
+height: 100%;
+    position: relative;
+}
+
+.menu_title {
+    background: white;
+    padding: 10px;
+    border-bottom: solid 1px #eee;
+    color: #5a585d;
+    font-weight: bold;
+}
+
+.siderbar_menu {
+    background: #ffffff;
+    list-style: none;
+    text-align: center;
+    
+    padding: 10px 0 10px 10px;
+}
+
+.siderbar_menu  li{
+    display: block;
+    border-bottom: solid thin #eee;
+}
+
+.siderbar_menu li {
+    display: block;
+    
+    padding: 6px 0 10px 0;
+}
+li.menu_link a:hover {
+    text-decoration: none;
+    color: #719471;
+}
+li.menu_link a {
+    color: #6d6a6a;
+}
+
+.user_pic_profile img {
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    margin-top: 5px;
+    border: solid 1px #fff;
+    padding:10px;
+    border-radius:50%;
+    
+}
+.user_profile_content {
+    margin: 80px 100px 20px 10px;
+    background: #fdfdfd;
+    position: absolute;
+    left: 35vh;
+    width: 75%;
+    height: 85%;
+    padding: 20px;
+}
+
+.user_pic_profile {}
+
+.filter_article {
+    height: auto;
+    background: #eee;
+    overflow: auto;
+    padding: 10px;
+}
+
+.filter_form{
+    float: left;
+    width:40%;
+}
+
+/*  end home .php css */
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+    .form_wrapper-2 {
+
+    margin-top: 20%;
+    padding-top: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    margin-left: auto;
+    
+}
+
+
+
+
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+.material-icons {
+    margin-left: -20px;
+    position: absolute;
+    left: 0;
+}
+
+
+
+@media(min-width: 576px){
+
+    .form_wrapper {
+        margin-top: 20%;
+    }
+    .form_wrapper-2 {
+
+    margin-top: 20%;
+    padding-top: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    margin-left: auto;
+    
+}
+}
+
+
+@media (max-width: 575.98px) {
+    .form_wrapper {
+        margin-top: 40%;
+    }
+}
+
