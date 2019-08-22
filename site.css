@@ -6,11 +6,6 @@ B5C1CD
 A77D5A
 */
 
-html, body{
-
-
-}
-
 body{
 
     /*height: 100%;*/
@@ -27,6 +22,20 @@ body{
 .display-4{
     margin-top: 45px;
 }
+h1.display-4 {
+    transition: all 1.2s;
+}
+.form_wrapper-2 h1 span {
+    color: white;
+}
+
+h1.display-4:hover {
+    transition: all 1.2s;
+    color:#eceae7;
+    transform:scale(1.2,1.2);
+
+}
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -50,22 +59,16 @@ body{
 
 
 }
-.wrapper-login{
-
+.wrapper-login {
     min-height: 80%;
     min-width: 100%;
     background: #A77D5A;
-    padding: 100px;  
-
+    padding: 100px;
     background-position: top;
-    background-image: linear-gradient(to top right,rgba(36, 162, 45, 0.90),rgba(8, 41, 74, 0.8)),url(Images/beach-dawn-dusk-2421607.jpg);
+    background-image: linear-gradient(to top right,rgba(104, 113, 105, 0.9),rgba(8, 41, 74, 0.8)),url(Images/beach-dawn-dusk-2421607.jpg);
     background-position: center;
     background-size: cover;
     background-position: center;
-    
-    
-
-
 }
 
 .form_wrapper {
@@ -104,7 +107,7 @@ body{
 
 .form_wrapper-2 {
 
-    margin-top: 20%;
+    margin-top: 15%;
     padding-top: 0px;
     padding-left: 0px;
     margin-right: auto;
@@ -133,7 +136,7 @@ body{
 }
 
 .footer {
-    background: #35578F;
+    background: #B5C1CD;
     min-height: 5%;
     border-top: 1px solid;
 
@@ -232,7 +235,7 @@ button.btn.btn-sm.btn-primary.btn-block {
 
 
 .register_form {
-    margin-top: 30%;
+    margin-top: 10%;
 }
 
 /* home .php  */
@@ -308,7 +311,7 @@ li.menu_link a {
     padding: 20px;
 }
 
-.user_pic_profile {}
+
 
 .filter_article {
     height: auto;

@@ -1,4 +1,6 @@
 <div class="container">
+<div class='flash'><p><?php if(isset($_SESSION['register_success'])){ echo ($_SESSION['email_registered']);} ?></p>
+</div>
     <div class="row">
         <div class="col-md-4 center form_wrapper">
 

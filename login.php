@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-
+//user looged in send restricted page
 if (isset($_SESSION['logged'])) {
     header("Location: home.php");
 }
@@ -9,6 +9,7 @@ if (isset($_SESSION['logged'])) {
 
 <?php
 require_once ("Core/init.php");
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $email = htmlspecialchars($_POST['user_email']);
@@ -20,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($validator->email_validation($email) == FALSE) {
 
             $error = " Invalid email";
+
         } else {
 
             // login User
@@ -40,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <?php
 $page = new Page("sign in", "please sign in ");
+
 $title = $page->get_title();
 ?> 
 

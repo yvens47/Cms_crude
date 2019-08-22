@@ -43,27 +43,22 @@ class User {
     }
 
     function register($email, $password) {  //
+        $this->db->connect()->real_escape_string($email);
         $r = $this->db->query("SELECT * from login where user_email = '$email'");
-        if ($r->num_rows > 0) {
-            echo " Email is already registered ";
+        if ($r->num_rows > 0) {            
+            
+            $_SESSION['email_registered'] = 'Email is already registered ';  
 
-            sleep(3);
-
-            header("Location:/CMS_Crude/login.php");
         } else {
             // continue iwith user registration insert new user into db
-            $sql = "INSERT INTO `login` (`user_id`, `user_email`, `user_password`, `member_since`, `user_role`) 
-			VALUES (NULL, '$email', '$password', CURRENT_DATE(), '0')";
-            // redirect user to login page to login;
+            $sql = "INSERT INTO `login` (`user_id`, `user_email`, `user_password`, `member_since`, `user_role`,`user_ful_name`) 
+			VALUES (NULL, '$email', '$password', CURRENT_DATE(), '0','')";        
             $q = $this->db->query($sql);
-
             if ($q) {
-
-                echo "registered successfully";
-
-
-
+               
+                $_SESSION['register_success'] = 'Email is already registered '; 
                 // ask user to verified their email address
+                header("location: login.php");
             }
         }
     }

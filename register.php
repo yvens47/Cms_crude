@@ -4,12 +4,39 @@ if (isset($_SESSION['logged'])) {
 
     header("location:/CMS_Crude/Dashboard/index.php");
 }
+require_once ("Core/init.php");
 ?>
 
 <?php
 
+$error = array();
+
     if($_SERVER['REQUEST_METHOD']=='POST'){
         
+     
+        $user_email = $_POST['user_email'];       
+        $user_password = md5($_POST['user_password']);
+     
+        
+        // check  if  all
+       
+        if(empty($user_email))
+            $error['user_email'] = "please enter an email";
+
+        if(empty($user_password))
+            $error['user_password'] = "Enter a password";
+       
+       
+        if(strlen($user_password) < 8 )
+            $error['password_short'] = "Password must be  8 characters or more";
+        
+            // error with form proccess registration
+        if(count($error) == 0 ){
+
+            echo "process"; 
+            $user->register($user_email, $user_password);
+
+        }
         
     }
 
