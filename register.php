@@ -15,7 +15,7 @@ $error = array();
         
      
         $user_email = $_POST['user_email'];       
-        $user_password = md5($_POST['user_password']);
+        $user_password = $_POST['user_password'];
      
         
         // check  if  all
@@ -27,14 +27,14 @@ $error = array();
             $error['user_password'] = "Enter a password";
        
        
-        if(strlen($user_password) < 8 )
+        if(strlen($user_password) < 8  & !empty($user_password))
             $error['password_short'] = "Password must be  8 characters or more";
         
             // error with form proccess registration
         if(count($error) == 0 ){
 
-            echo "process"; 
-            $user->register($user_email, $user_password);
+           $password =md5($user_password) ;
+            $user->register($user_email, $password);
 
         }
         

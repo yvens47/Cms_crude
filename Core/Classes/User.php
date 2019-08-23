@@ -8,9 +8,9 @@ class User {
     private $user_name;
     private $user_password;
     private $user_email;
-    public $user_first_name;
-    public $user_last_name;
-    private $user_profile_pic;
+    public  $user_first_name;
+    public  $user_last_name;
+    private  $user_profile_pic;
     protected $db;
 
     function __construct($db) { # code...
@@ -26,16 +26,12 @@ class User {
             // Log user in , send protected 
 
             $row = $r->fetch_assoc();
-
             $_SESSION['logged'] = "yes";
-
             $_SESSION['user_role'] = ($row['user_role']);
-
             $username = explode('@', $row['user_email']);
-
             $_SESSION['user_email'] = $username[0];
-
             return true;
+
         } else {
 
             return False;
@@ -83,8 +79,19 @@ class User {
             
             
         }
+
+      
         
         
+    }
+    /* view user full name based on id */
+
+    function view_user($id){
+        $sql = "select user_full_name from login where user_id ='$id'";
+        
+        $result = $this->db->query($sql);
+        return  $result->fetch_assoc()['user_full_name'];
+
     }
 
 }

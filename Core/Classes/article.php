@@ -17,10 +17,20 @@ class Article {
     public $title;
     public $content;
     protected $db;
+    
 
     function __construct($db) {
         $this->db = $db;
     }
+
+    function author($id){
+        $sql = "select user_full_name from login where user_id ='$id'";
+        
+        $result = $this->db->query($sql);
+        return  $result->fetch_assoc()['user_full_name'];
+
+    }
+
 
     function display_all() {
         
@@ -33,10 +43,12 @@ class Article {
             $date = $row['article_date_posted'];
             $id = $row['article_id'];
             
+            $author_name = $this->author($row['user_id']);
+            
             echo "<div class='post'> <img src='http://via.placeholder.com/640x360' class='pimg img-thumbnail float-left'>". 
             
             "<div class='pwra'><h1 class='ptitle'><a href='view.php?id=$id'>$title</a></h1>".
-            "<p class='pdate'>$date By Jean Pierre
+            "<p class='pdate'>".$author_name. " ".$date."
             <span class='badge badge-pill badge-success'>35 views</span>
             <span class='badge badge-pill badge-info'>19 comments</span> </p>".
             "<p> $content  <a href='view.php?id=$id' class='btn-link'>more...</a></p>".
@@ -52,22 +64,25 @@ class Article {
 
     function view($article_id) {             
         if (is_int((int)$article_id)) {
-            $id = filter_var($article_id, FILTER_VALIDATE_INT);
+            $id = filter_var(intval($article_id), FILTER_VALIDATE_INT);            
             // send query to db for article
             $sql = "Select * from articles where article_id ='$id'";      
-            $query = $this->db->query($sql);  
+            $query = $this->db->query($sql);             
             
-            
-            if ($query->num_rows == 1) {
-               
-                $row = mysqli_fetch_assoc($query);                    
+            if ($query->num_rows == 1) {               
+                $row = mysqli_fetch_assoc($query);                
                 
-                //$query->close();
+                return $row;
                 
+            }else{
+                echo "Article is not found";
             }
+
+        }else{
+            header('location: 404.php');
         }
         
-        return $row;
+       
         
     }
 

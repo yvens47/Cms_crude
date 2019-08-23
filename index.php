@@ -83,40 +83,7 @@ $page->set_title("my home page");
 	<div class="col-md-8">
 	
 	<?php  $article->display_all(); ?>
-		<div class="articles">
-			<div class="post">
-				<img src="http://via.placeholder.com/640x360" class="pimg img-thumbnail float-left">
-				<h1 class="ptitle"><a href="post.php?pid=1">Lorem ipsum dolor sit amet 1</a></h1>
-				<p class="pdate">Jun 18 2018 By Jean Pierre
-				<span class="badge badge-pill badge-success">35 views</span>
-				<span class="badge badge-pill badge-info">19 comments</span>
-			</p>
-				<p>
-					Curabitur placerat commodo sollicitudin. Donec convallis metus id euismod ultrices. Etiam in pharetra diam. Curabitur ac accumsan lectus.  <a href="" class="btn-link">more...</a></p>
-		</div>
-
-		<div class="post">
-				<img src="http://via.placeholder.com/640x360" class="pimg img-thumbnail float-left">
-				<h1 class="ptitle"><a href="#">Lorem ipsum dolor sit amet 1</a></h1>
-				<p class="pdate">Jun 18 2018 By Jean Pierre
-				<span class="badge badge-pill badge-success">35 views</span>
-				<span class="badge badge-pill badge-info">19 comments</span>
-			</p>
-				<p>
-					Curabitur placerat commodo sollicitudin. Donec convallis metus id euismod ultrices. Etiam in pharetra diam. Curabitur ac accumsan lectus.  <a href="" class="btn-link">more...</a></p>
-		</div>
-
-
-		<div class="post">
-				<img src="http://via.placeholder.com/640x360" class="pimg img-thumbnail float-left">
-				<h1 class="ptitle"><a href="#">Lorem ipsum dolor sit amet 1</a></h1>
-				<p class="pdate">Jun 18 2018 By Jean Pierre
-				<span class="badge badge-pill badge-success">35 views</span>
-				<span class="badge badge-pill badge-info">19 comments</span>
-			</p>
-				<p>
-					Curabitur placerat commodo sollicitudin. Donec convallis metus id euismod ultrices. Etiam in pharetra diam. Curabitur ac accumsan lectus.  <a href="" class="btn-link">more...</a></p>
-		</div>
+		
 
 
 		<div class="post">

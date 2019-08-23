@@ -207,9 +207,20 @@ button.btn.btn-sm.btn-primary.btn-block {
     overflow: auto;
 }
 
-.post:hover{
-    border-bottom: solid 1px grey;
+.post_wrapper {
+    padding: 80px 0;
+    background: #fff;
+    color: #757575;
+    height: 100%;
+    text-align:left;
+    overflow: auto;
+    position: relative;
 }
+
+.post_wrapper h1 {
+    font-size: 25px;
+}
+
 
 .ptitle {
     color: #4c4a4a;
@@ -384,6 +395,10 @@ li.menu_link a {
     float: right;
     display: block;
     text-align: left;
+}
+label.error {
+    color: red;
+    font-weight: bold;
 }
 
 
