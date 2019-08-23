@@ -25,10 +25,25 @@ class Article {
     function display_all() {
         
         $sql = "Select * from articles";
+        
         $query = $this->db->query($sql); 
         while($row = mysqli_fetch_assoc($query)){
+            $title =substr($row['article_title'],0,30);
+            $content = substr($row['article_content'], 0, 150);
+            $date = $row['article_date_posted'];
+            $id = $row['article_id'];
             
-            print_r($row);
+            echo "<div class='post'> <img src='http://via.placeholder.com/640x360' class='pimg img-thumbnail float-left'>". 
+            
+            "<div class='pwra'><h1 class='ptitle'><a href='view.php?id=$id'>$title</a></h1>".
+            "<p class='pdate'>$date By Jean Pierre
+            <span class='badge badge-pill badge-success'>35 views</span>
+            <span class='badge badge-pill badge-info'>19 comments</span> </p>".
+            "<p> $content  <a href='view.php?id=$id' class='btn-link'>more...</a></p>".
+
+            "</div></div>";
+     
+     
         }
         
 

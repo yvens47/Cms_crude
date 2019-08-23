@@ -81,6 +81,8 @@ $page->set_title("my home page");
 
 
 	<div class="col-md-8">
+	
+	<?php  $article->display_all(); ?>
 		<div class="articles">
 			<div class="post">
 				<img src="http://via.placeholder.com/640x360" class="pimg img-thumbnail float-left">

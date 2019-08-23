@@ -199,7 +199,7 @@ button.btn.btn-sm.btn-primary.btn-block {
 }
 
 .post {
-    border-bottom: solid 1px #B5C1CD;
+    border-bottom: solid 1px #f9f9f9;
     margin-bottom: 5px;
     background: white;
 
@@ -378,9 +378,17 @@ li.menu_link a {
     left: 0;
 }
 
+.pwra {
+    background: white;
+    width: 58%;
+    float: right;
+    display: block;
+    text-align: left;
+}
 
 
 @media(min-width: 576px){
+
 
     .form_wrapper {
         margin-top: 20%;
@@ -402,6 +410,18 @@ li.menu_link a {
 @media (max-width: 575.98px) {
     .form_wrapper {
         margin-top: 40%;
+    }
+
+    .pimg{
+        width:100%;
+        float: none;
+    }
+
+    .pwra {
+    
+        width: 100%;
+        
+        text-align: left;
     }
 }
 
