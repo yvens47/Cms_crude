@@ -5,6 +5,7 @@ include 'Core/Classes/validator.php';
 include 'Core/Database/database.php';
 include 'Core/Classes/page.php';
 include 'Core/Classes/article.php';
+include 'Core/Classes/comment.php';
 
 global $db;
 

@@ -208,13 +208,31 @@ button.btn.btn-sm.btn-primary.btn-block {
 }
 
 .post_wrapper {
-    padding: 80px 0;
+    padding: 60px 0;
     background: #fff;
     color: #757575;
     height: 100%;
     text-align:left;
     overflow: auto;
     position: relative;
+}
+.article {
+    margin: -200px 0;
+    background: white;
+    /* padding: 10px 10px; */
+    /* border-radius: 10px; */
+    height: auto;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+.post_category {
+    background: #566063;
+    height: auto;
+    padding: 10px 20px;
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
 }
 
 .post_wrapper h1 {
