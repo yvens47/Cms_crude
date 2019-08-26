@@ -51,4 +51,5 @@ class Database
 	function close_db(){
 		$this->link->close();
 	}
+	
 }

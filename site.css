@@ -217,13 +217,19 @@ button.btn.btn-sm.btn-primary.btn-block {
     position: relative;
 }
 .article {
-    margin: -200px 0;
+    margin: -250px 0;
     background: white;
     /* padding: 10px 10px; */
     /* border-radius: 10px; */
     height: auto;
     overflow: auto;
     margin-bottom: 10px;
+    box-shadow: 0px -1px 10px 1px #bfbfbf;
+}
+.article_wrap {
+    padding: 10px 20px;
+    height: auto;
+    overflow: auto;
 }
 
 .post_category {
@@ -237,6 +243,7 @@ button.btn.btn-sm.btn-primary.btn-block {
 
 .post_wrapper h1 {
     font-size: 25px;
+    margin-bottom: 20px;
 }
 
 
@@ -320,24 +327,17 @@ li.menu_link a {
     color: #6d6a6a;
 }
 
-.user_pic_profile img {
-    width: 100%;
-    height: auto;
-    overflow: auto;
-    margin-top: 5px;
-    border: solid 1px #fff;
-    padding:10px;
-    border-radius:50%;
+.user_profile_pic {
+    padding: 40px 40px;
+    height: 50px;
+    width: 90px;
+    float: left;
+    margin: 2px 10px 10px 0px;
     
-}
-.user_profile_content {
-    margin: 80px 100px 20px 10px;
-    background: #fdfdfd;
-    position: absolute;
-    left: 35vh;
-    width: 75%;
-    height: 85%;
-    padding: 20px;
+    background: white;
+    background: url(https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png);
+    background-size: 90%;
+    background-repeat: no-repeat;
 }
 
 
@@ -352,6 +352,16 @@ li.menu_link a {
 .filter_form{
     float: left;
     width:40%;
+}
+
+
+
+.comment_wrap {
+    /* border-bottom: solid 1px #eee; */
+    height: auto;
+    overflow: auto;
+    /* margin-bottom: 15px; */
+    padding: 1;
 }
 
 /*  end home .php css */
@@ -417,6 +427,11 @@ li.menu_link a {
 label.error {
     color: red;
     font-weight: bold;
+}
+.comment {
+    padding: 10px 20px;
+    background: white;
+    box-shadow: 1px 0px 10px 1px #eee;
 }
 
 

@@ -28,28 +28,27 @@ class Comment{
     }
 
 
+    // display all comments based on post id
     function view_comments(){
 
         $sql = "select * from comment where comment.post_id ='$this->post_id'";
         $result = $this->db->query($sql);
-        $this->set_comment_count($result->num_rows);
 
-
-        // have more than one comment
-        if($result->num_rows > 1){
+        $this->set_comment_count($result->num_rows);       
             // loop trhoug and print the comments
             return $result->fetch_all(MYSQLI_ASSOC);
+         
+    }
+    // insert a comment for a post
+    function  add_comment($content){
 
-        }else if($result->num_rows ==1){
+        $sql =" insert into comment (`id`,`user_id`,`post_id`,`text`)
+         values(NULL, '$userd_id','$this->post_id', '$content')";
 
-            return $result->fetch_assoc();
-        }else{
-            // return 0 for now;
-            return 0;
-            
-        }
+         $result = $this->db->query($sql);
 
-    
-        
+         if($result)
+            return "comment is added";
+
     }
 }

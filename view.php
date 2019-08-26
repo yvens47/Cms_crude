@@ -7,6 +7,7 @@ $id = $_GET['id'];
 $comment = new Comment($id, $db);
 $c = $comment->view_comments();
 
+
 ?> 
 <?php  require_once("Template/header-2.php");?>
 
@@ -34,23 +35,47 @@ $c = $comment->view_comments();
     <div class='post_category'>
     Technology
     </div>
+    <div class='article_wrap'>
     <?php   $post = $article->view($id) ?>
     <?php  $post_user_id = $post['user_id'] ?>
     <h1 class='post_title'><?php echo $post['article_title'] ?></h1>
-    <img src='http://via.placeholder.com/640x360' class='img-fluid'>
-   
-        <?php //print_r($article->view($id) );?>
     <p>Posted by <span><?php echo " ". $user->view_user($post_user_id); echo " ". $post['article_date_posted'] ?></span>
     <span class="badge badge-pill badge-success">35 views</span>
-				<span class="badge badge-pill badge-info">19 comments</span></p>
+				<span class="badge badge-pill badge-info"><?php echo $comment->get_comment_count()?> comments</span></p>
+    <img src='https://cdn.pixabay.com/photo/2017/12/17/07/50/water-3023812_960_720.jpg' class='img-fluid'>
+   
+        <?php //print_r($article->view($id) );?>
+   
     <p><?php echo $post['article_content'] ?></p>
+    </div>
 </div>
 <div class='comment'>
-  <?php   
-   
-    echo $comment->get_comment_count();
-    echo "<pre>";
-    print_r($c) ;
+
+<div class="form-group">
+<form method='post' action='post_comment.php' class='post_comment' enctype='multipart/form-data'>    
+<label for="exampleFormControlTextarea1">  
+ 
+     <?php echo $comment->get_comment_count() >0 ? $comment->get_comment_count()." Commnent(s)" : "Be the first to add a comment";?> 
+     </label>
+     <input type='hidden' name='post_id' value='<?php echo $id ?>'>
+    <textarea name='text' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <button class='btn btn-info' type='submit' name='post_comment'> Comment</button>
+</form>
+  </div>
+  
+      <?php
+    if($comment->get_comment_count() >= 1){
+        
+        foreach($c as $c_ment => $n){
+            echo "<div class='comment_wrap'>".
+            "<div class='user_profile_pic'>
+            </div>";
+            echo   "<p>".$n['text']."</p>";
+
+            echo "</div>";
+        }
+    }
+    
     
     
     ?>
