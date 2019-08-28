@@ -36,19 +36,29 @@ class Comment{
 
         $this->set_comment_count($result->num_rows);       
             // loop trhoug and print the comments
-            return $result->fetch_all(MYSQLI_ASSOC);
+            $datas = array();
+            while ($row = $result->fetch_assoc()){
+                
+                $datas[] = $row;
+            }
+            
+
+        return $datas;
          
     }
+
     // insert a comment for a post
     function  add_comment($content){
 
-        $sql =" insert into comment (`id`,`user_id`,`post_id`,`text`)
+       /* $sql ="insert into comment (`id`,`user_id`,`post_id`,`text`)
          values(NULL, '$userd_id','$this->post_id', '$content')";
 
          $result = $this->db->query($sql);
 
          if($result)
-            return "comment is added";
+            return "comment is added";*/
+
+            return ['text'=>$content];
 
     }
 }

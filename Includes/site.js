@@ -31,8 +31,9 @@ function postComment(){
       xmlRequest.onreadystatechange = function(){
         if(this.readyState ==4 && this.status ==200){
 
-         const response = JSON.parse(this.responseText);         
+         const response = JSON.parse(this);         
          console.log(response);
+         alert(response);
 
          // put ajax response back to the the dom;
          var newEl = document.querySelector('.comment');

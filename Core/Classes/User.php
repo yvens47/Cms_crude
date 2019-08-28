@@ -72,11 +72,11 @@ class User {
 
             // user is a member; email new random password;
             $string ='abcdefghijklmnopqrstuvwxyz0123456789';
-            $newstring ='';
+            $newstring = "";
 
             for($i=0; $i < 8; $i++){
                 
-                $rand = rand(0, strlen($string));
+                $rand = rand(0, strlen($string)-1);
 
                 $newstring .= strval( $string[$rand]);
             }

@@ -18,57 +18,24 @@ $page->set_title("my home page");
 
 
 </div>
-
-
-
-
-<div class="container">
-	<div class="row">
-		<div class="col-md-4">
-			<img src="https://cdn.pixabay.com/photo/2017/05/16/11/57/eye-2317618_960_720.png" style="width:40%">
-			<h2>Lorem ipsum dolor sit</h2>
-			<p class="lead">s is a simple hero unit, a simple jumbotmation.</p>
-			
+<div class='feature'>
+<div class='container'>
+	<div class='row'>
+		<div class='col-md-4'>
+		<img  class='img-fluid' src='https://cdn.pixabay.com/photo/2019/08/24/13/25/tunnel-4427609_960_720.jpg'/>
 		</div>
-
-		<div class="col-md-4">
-			<img src="https://prodfrontendcdn.azureedge.net/media-storage/20180705155043215share-with-links.png" style="width:45%">
-			<h2>Lorem ipsum dolor sit</h2>
-			<p class="lead">s is a simple hero unit, a simple jumbotmation.</p>
-			
+		<div class='col-md-4'>
+		<img class='img-fluid' src='https://cdn.pixabay.com/photo/2019/08/25/13/34/dogs-4429513_960_720.jpg'/>
 		</div>
-
-
-		<div class="col-md-4">
-			<img src="https://www.revive-adserver.com/media/noun_download-cloud_870218_138341.png" style="width:40%">
-			<h2>Lorem ipsum dolor sit</h2>
-			<p class="lead">s is a simple hero unit, a simple jumbotmation.</p>
-			
+		<div class='col-md-4'>
+		<img  class='img-fluid' src='https://cdn.pixabay.com/photo/2019/06/29/05/42/books-4305459_960_720.jpg'/>
 		</div>
-	</div>
 	
-
-</div>
-
-<div class="feature">
-	<div class="container">
-
-	<div class="row">
-	<div class="col-md-5">
-		<h2>Lorem ipsum dolor sit amet, consectetur.</h2>
-
-		<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at erat pretium, euismod orci nec, aliquam orci. Nullam luctus eros non eros semper, ut tempor ante dignissim. Nullam in risus vel purus lacinia malesuada. Maecenas non rhoncus leo, vitae pellentesque justo. Fusce ut interdum</p>
 	</div>
-	<div class="col-md-7">
-	<video width="520" height="340" controls>
-  <source src="Images/Pexels Videos 1263198.mp4" type="video/mp4">
-  <source src="movie.ogg" type="video/ogg">
-  Your browser does not support the video tag.
-</video>
 </div>
 </div>
-</div>
-</div>
+
+
 
 
  <div class="wrapper">

@@ -6,7 +6,7 @@
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Jekyll v3.8.5">
-        <title><?php echo $page->get_title(); ?></title>
+        <title><?php echo $title; ?></title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sign-in/">
         <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
@@ -63,16 +63,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Features</a>
                     </li>
-
-                    
-                        <form class="form-inline center" action='search.php' method='get'>
-                            <input name='q' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
-                  
-
-
-
 
                 </ul>
 

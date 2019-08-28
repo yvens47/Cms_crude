@@ -159,6 +159,7 @@ button.btn.btn-sm.btn-primary.btn-block {
     margin-top: -10px;
     color: #dee5ec;
     border-radius: 0;
+    margin-bottom: 0;
 }
 .jumbotron h1{
     color:white;
@@ -167,13 +168,33 @@ button.btn.btn-sm.btn-primary.btn-block {
 
 .feature {
     width: 100%;
-    background: #5D6755;
+    
     height: auto;
     padding: 15px 15px;
-    border-bottom: solid 1px grey;
+   
     overflow: auto;
     margin-bottom: 10px;
 }
+.feature img {
+    background: white;
+    border: solid #f3f3f3 1px;
+    padding: 10px 10px;
+}
+.feature img {
+    
+    margin: 5px 10px;
+    padding: 10px 10px;
+    background: whitesmoke;
+    border: solid 1px #eee;
+    transition: all 1s
+
+}
+.feature img:hover {
+    transform: scale(1.2);
+    background:#eee;
+
+}
+
 
 .feature h2 {
     color: #A77D5A;

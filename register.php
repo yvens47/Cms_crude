@@ -21,10 +21,10 @@ $error = array();
         // check  if  all
        
         if(empty($user_email))
-            $error['user_email'] = "please enter an email";
+            $error['user_email'] = "Email is required";
 
         if(empty($user_password))
-            $error['user_password'] = "Enter a password";
+            $error['user_password'] = "Password is required";
        
        
         if(strlen($user_password) < 8  & !empty($user_password))
@@ -34,7 +34,7 @@ $error = array();
         if(count($error) == 0 ){
 
            $password =md5($user_password) ;
-            $user->register($user_email, $password);
+           $user->register($user_email, $password);
 
         }
         
