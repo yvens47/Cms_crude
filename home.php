@@ -10,14 +10,12 @@ if (!isset($_SESSION['logged'])) {
 
 
 <?php
-require_once ("Core/init.php");
+require_once ("init.php");
 
 $page = new Page("Member area", "Welcome member ");
 $title = $page->get_title();
 
-//print_r($_FILES);
-
-if (isset($_FILES)) {
+if (isset($_FILES) && !empty($_FILES)) {
 
 
     $filename = $_FILES['file']['name'];
@@ -27,82 +25,113 @@ if (isset($_FILES)) {
     
     
 }
+
 ?>
 
 
 
 
 <?php require_once("Template/header.php"); ?>
+<div class='wrapper'>
 
-<div class="full_screen">
-    <div class="sidebar">
+<div class='container-fluid'>
 
-        <div class="user_pic_profile">
-            <img src="Images/user_profile_pic.png" alt="user picture"/>
-            <div class="update_pic">
-<!--                <i class="material-icons">
-                    camera_enhance
-                </i>-->
-                <p class="lead"><a href="#" data-toggle='modal' data-target='#mymodal'>update picture</a>
-                </p>
-            </div>
-        </div>
-<?php require_once("Template/member_left_sidebar.php"); ?>
+    <div class='row'>
+        <div class='col-md-3'>
+         <?php require_once("Template/member_left_sidebar.php"); ?>
+         </div>
+
+         <div class='col-md-9'>
+
+            <div class='main_content'>
+            
+
+                
+      <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+      
+          <?php if (isset($_GET['page'])):?>
+          
+          <div class='filter'>
+                <h1>Add a post</h1>
+                
+              
+             </div>
+
+          <div class='toolbar'></div>
+          <div class='text-editor'>
+
+          </div>
 
 
+              
+
+         <?php else: ?>
+          
+          <!-- filter begins here here --->
+             <div class='filter'>
+                <h1>filter articles by Month</h1>
+                <a href='home.php?page=add' class='btn btn-warning' >Add Article</a>
+                <?php require 'Template/filter_form.php'; ?>
+              
+             </div>
+             <!-- filter ends here --->
+          <?php print_r($_SESSION) ?>
+        	<?php  $article->display_all(50); ?>	
+
+
+        <?php endif; ?>
+      
+      
+      </div>
+      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">.prof..</div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">.mes..</div>
+      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">.cont..</div>
     </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="user_profile_content">
-                <div class="title"><h1>Welcome User Profile</h1></div>
-
-                <div class="user_content_area">
-<?php if (isset($_GET['page_id']) && $_GET['page_id'] == 'articles'): ?>
-                        <div class="filter_article">
-                            <div class="col-md-6 float-right"> 
-                                <button class="btn btn-secondary">
-
-                                    <!-- For IE9 or below. -->
-
-                                    <i class="material-icons">
-                                        view_list
-                                    </i>                      </button>
-
-                                <button class="btn btn-secondary">
-                                    <!-- For IE9 or below. -->
-
-                                    <i class="material-icons">
-                                        view_module
-                                    </i> 
-                                </button>
-    <?php require 'Template/filter_form.php'; ?>
-
-                            </div>
-                        </div>
-
-                        All articles posted by user will be display here
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="http://via.placeholder.com/640x360" alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-<?php endif; ?>
+  </div>
 
 
+                
 
+               
 
-                </div>
+             
             </div>
 
-        </div>
-    </div>
-
-
+                      
+                    
+           
+         </div>
 
 
 </div>
+
+<!-- add post modal begins here -->
+<div class="modal fade " id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add a post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="add_post btn btn-primary">Post it</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- add post modal ends here -->
+            
+
+
 
 <div class="modal fade bd-example-modal-lg" id='mymodal'tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -133,6 +162,54 @@ if (isset($_FILES)) {
 </div>
 </div>
 
-
+</div>
 
 <?php require_once("Template/footer.php"); ?>
+<!-- Main Quill library -->
+<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+<!-- Theme included stylesheets -->
+<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+
+<!-- Core build with no theme, formatting, non-essential modules -->
+<link href="//cdn.quilljs.com/1.3.6/quill.core.css" rel="stylesheet">
+<script src="//cdn.quilljs.com/1.3.6/quill.core.js"></script>
+<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<script>
+var toolbarOptions = [
+  ['link','image'],
+  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  ['blockquote', 'code-block'],
+
+  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+  [{ 'direction': 'rtl' }],                         // text direction
+
+  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+  [{ 'font': [] }],
+  [{ 'align': [] }],
+
+  ['clean']                                         // remove formatting button
+];
+
+var options = {
+  debug: 'info',
+  modules: {
+    toolbar: '.toolbar',
+    toolbar: toolbarOptions
+  },
+  placeholder: 'start writing...',
+  readOnly: false,
+  theme: 'snow'
+};
+
+var editor = new Quill('.text-editor', options); 
+</script>

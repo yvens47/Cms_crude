@@ -43,7 +43,7 @@
         </style>
         
     </head>
-    <body class="text-center">
+    <body>
 
         <nav class="navbar navbar-expand-lg navbar-dark  bg-dark fixed-top ml-auto">
             <a class="navbar-brand" href="#">CMScrude</a>

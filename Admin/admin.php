@@ -8,9 +8,10 @@
 
 class Admin extends User{
 	
-	function __construct()
+	function __construct($db)
 	{
-		# code...
+		
+		parent::__construct($db);
 	}
 
 	function  display_users(){

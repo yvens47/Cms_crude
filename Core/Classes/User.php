@@ -13,8 +13,10 @@ class User {
     private  $user_profile_pic;
     protected $db;
 
+    private $is_admin = false;
+
     function __construct($db) { # code...
-        $this->db = new Database("cms_crude", "login");
+        $this->db = $db;
     }
 
     function login($email, $password) {
@@ -26,6 +28,7 @@ class User {
             // Log user in , send protected 
 
             $row = $r->fetch_assoc();
+            $_SESSION = $row['article_id'];
             $_SESSION['logged'] = "yes";
             $_SESSION['user_role'] = ($row['user_role']);
             $username = explode('@', $row['user_email']);
@@ -44,13 +47,16 @@ class User {
         if ($r->num_rows > 0) {            
             
             $_SESSION['email_registered'] = 'Email is already registered ';  
+           
 
         } else {
             // continue iwith user registration insert new user into db
-            $sql = "INSERT INTO `login` (`user_id`, `user_email`, `user_password`, `member_since`, `user_role`,`user_ful_name`) 
-			VALUES (NULL, '$email', '$password', CURRENT_DATE(), '0','')";        
+            $sql = "INSERT INTO `login` (`user_id`, `user_email`, `user_password`, `member_since`, `user_role`,`user_full_name`) 
+            VALUES (NULL, '$email', '$password', CURRENT_DATE(), '0','')";   
+            echo $sql;     
             $q = $this->db->query($sql);
             if ($q) {
+
                
                 $_SESSION['register_success'] = 'Email is already registered '; 
                 // ask user to verified their email address

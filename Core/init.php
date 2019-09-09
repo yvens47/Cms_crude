@@ -6,11 +6,12 @@ include 'Core/Database/database.php';
 include 'Core/Classes/page.php';
 include 'Core/Classes/article.php';
 include 'Core/Classes/comment.php';
+include 'Core/Classes/pagination.php';
 
 global $db;
 
 
-$db = new Database("cms_crude", "login");
+$db = new Database(DBHOST,DATABASE, USER, PASSWORD,"login");
 
 $user = new User($db);
 $validator = new Validator();

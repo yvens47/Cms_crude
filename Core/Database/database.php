@@ -11,6 +11,7 @@ class Database
 	 public $password;
 	 public $tablename;
 	 public $connect;
+	 private  $host;
 
 	 public $link;
 
@@ -19,14 +20,14 @@ class Database
 
 
 	
-	function __construct($database, $tablename)
+	function __construct($host, $database, $user, $password, $tablename)
 	{
-
+		$this->host = $host;
 		$this->database = $database;
-		$this-> user = "root";
-		$this->password='';
+		$this-> user = $user;
+		$this->password=$password;
 		$this->tablename = $tablename;
-		$this->link = new mysqli("localhost", $this->user,$this->password, $this->database) ;
+		$this->link = new mysqli($this->host, $this->user,$this->password, $this->database) ;
 
 
 		# code...
@@ -46,6 +47,14 @@ class Database
 
 		return($q);
 
+	}
+
+	function count_rows(){
+		$sql =  "select count(*) from articles";
+		$result = $this->query($sql)->fetch_array()[0];
+		
+
+		return ($result);
 	}
 
 	function close_db(){

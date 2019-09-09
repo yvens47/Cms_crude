@@ -3,12 +3,15 @@ session_start();
 
 //user looged in send restricted page
 if (isset($_SESSION['logged'])) {
+    unset($_SESSION['register_success']);
+    unset($_SESSION['email_registered']);
     header("Location: home.php");
 }
+
 ?>
 
 <?php
-require_once ("Core/init.php");
+require_once ("init.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 

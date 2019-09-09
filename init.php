@@ -5,3 +5,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
 }
+
+
+require ABSPATH ."/config/config.php";
+
+require ABSPATH."Core/init.php";

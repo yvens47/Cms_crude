@@ -5,7 +5,8 @@
  */
 
 $(document).ready(function () { 
-   postComment();  
+  // postComment();  
+  addPost();
     
    $(".upload").submit(function(e){
        
@@ -18,6 +19,17 @@ $(document).ready(function () {
    });
    
 });
+addPost();
+
+function addPost (){
+   
+   const addPostBtn = document.querySelector('.add_post');
+
+   addPostBtn.addEventListener('click', function(){
+
+      alert("button click");
+   })
+}
 
 // ppost user comment througn xmlhttprequest
 function postComment(){

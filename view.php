@@ -1,7 +1,7 @@
 <?php session_start();?>
 
 <?php 
-require_once ("Core/init.php");
+require_once ("init.php");
 $page->set_title("view");
 $id = $_GET['id'];
 $comment = new Comment($id, $db);
@@ -20,9 +20,7 @@ $c = $comment->view_comments();
   <h1 class="display-4"> CMS Crude</h1>
   <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis malesuada dui, vitae posuere ligula mattis vitae.</p>
   <hr class="my-4">
-  <p>It usyyyes utility classes for typography and spacing to space content out within the larger container.</p>
-  <a class="btn btn-primary-cs btn-lg" href="#" role="button">Learn more</a>
-
+  
 </div>
 
 </div>
@@ -77,6 +75,51 @@ $c = $comment->view_comments();
 
 
 <div class='col-md-4'>
+
+<div class="article">
+    <h1 class="view_title">Request a tutorial</h1>
+    <div class='article_wrap'>
+    <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div></div>
+
+  
+    
+
+
+
+</div>
+<div class='realated'>
+<h2>Other Post You might Enjoy</h2>
+ <div class='article_wrap'>
+
+ <ul class="">
+  <li class="">
+    <p>Cras justo odio lipsume content </p>
+    <img class='img-fluid' src='https://cdn.pixabay.com/photo/2019/08/24/22/21/child-4428504_960_720.jpg'/>
+  </li>
+
+
+  <li class="">
+    <p>Cras justo odio lipsume content </p>
+    <img class='img-fluid' src='https://cdn.pixabay.com/photo/2019/08/23/20/06/landscape-4426419_960_720.jpg'/>
+    
+  </li>
+
+
+  <li class="">
+    <p>Cras justo odio lipsume content </p>
+    <img class='img-fluid' src='https://cdn.pixabay.com/photo/2019/03/19/19/54/polyommatus-icarus-4066785_960_720.jpg'/>
+  </li>
+  
+</ul>
+
+
+ </div>
+
+</div>
+
 
 </div>
 </div>

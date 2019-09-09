@@ -45,7 +45,7 @@
         <!-- Custom styles for this template -->
         <link href="signin.css" rel="stylesheet">
     </head>
-    <body class="text-center">
+    <body>
 
         <nav class="navbar navbar-expand-lg navbar-dark  bg-dark fixed-top ml-auto bg-dark-header-2">
             <a class="navbar-brand" href="#">CMScrude</a>

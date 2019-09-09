@@ -4,7 +4,7 @@ if (isset($_SESSION['logged'])) {
 
     header("location:/CMS_Crude/Dashboard/index.php");
 }
-require_once ("Core/init.php");
+require_once ("init.php");
 ?>
 
 <?php
