@@ -40,10 +40,18 @@ class Database
 			
 	}	
 
+	// clean user input before enter to db
+	function safe($string){
+
+		return $this->connect()->real_escape_string($string);
+	}
+
 
 	function query($param){	
 		
-		$q = $this->link->query($param);		
+		$q = $this->link->query($param);
+		
+	
 
 		return($q);
 

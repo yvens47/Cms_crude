@@ -66,8 +66,7 @@
 
                     
                         <form class="form-inline center" action='search.php' method='get'>
-                            <input name='q' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            <input style='border-radius: 20px;margin-left: 10px' name='q' class=" search form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                         </form>
                   
 

@@ -7,6 +7,7 @@ include 'Core/Classes/page.php';
 include 'Core/Classes/article.php';
 include 'Core/Classes/comment.php';
 include 'Core/Classes/pagination.php';
+include 'Core/Classes/Tutorial.php';
 
 global $db;
 

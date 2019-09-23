@@ -3,9 +3,14 @@
 <?php 
 require_once ("init.php");
 $page->set_title("view");
-$id = $_GET['id'];
-$comment = new Comment($id, $db);
-$c = $comment->view_comments();
+
+
+
+  $id = $_GET['id'];
+  $comment = new Comment($id, $db);
+  $c = $comment->view_comments();
+
+
 
 
 ?> 
@@ -13,6 +18,7 @@ $c = $comment->view_comments();
 
 
 <div class='post_wrapper wrapper'>
+<!--
 <div class="jumbotron">
 <div class='container'>
 
@@ -23,7 +29,7 @@ $c = $comment->view_comments();
   
 </div>
 
-</div>
+</div>-->
 
 <div class='container'>
 
@@ -55,12 +61,18 @@ $c = $comment->view_comments();
     if($comment->get_comment_count() >= 1){
         
         foreach($c as $c_ment => $n){
-            echo "<div class='comment_wrap'>".
-            "<div class='user_profile_pic'>
-            </div>";
-            echo   "<p>".$n['text']."</p>";
+            echo "<div class='comment_wrap container'>".
+            
+            "<div class='row'>
+              <div class='col-md-1'>
+                 <img style='width:100%'src='https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png' class=''/>
+              </div> 
 
-            echo "</div>";
+              <div class='col-md-11'>
+                 <p class='author'>".$n['comment_name']."</p>".
+                "<p>".$n['text']."</p>
+              </div> ";         
+             echo "</div></div>";
         }
     }
     
@@ -79,9 +91,16 @@ $c = $comment->view_comments();
 <div class="article">
     <h1 class="view_title">Request a tutorial</h1>
     <div class='article_wrap'>
+   
+    <form method='post' action='request.php'>
     <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <label for="exampleFormControlTextarea1">what would you like to learn</label>
+    <textarea name='request' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+     
+    <div style='text-align:right; margin-top: 3px'>
+      <button type='submit' class='btn  btn-info '>Send</button>
+     </form>
+  </div>
   </div></div>
 
   

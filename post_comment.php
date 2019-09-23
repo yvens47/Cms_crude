@@ -1,20 +1,30 @@
 <?php 
+session_start();
 
-require_once ("Core/init.php");
-
-
+require_once ("init.php");
 
 if(isset($_POST['text'])){
 
+    if(isset($_SESSION['logged'])){
+
+        $name = $_SESSION['user_email'];
+    }
+
+    else{
+
+        $name = $_POST['name'];
+    }
+
+   
     $text =  $_POST['text'];
     $post_id = $_POST['post_id'];
-    //$comment = new Comment($post_id, $db);
+    $url = $_POST['url'];   
 
-    //print_r(json_encode($comment));
+    $comment = new Comment($post_id, $db);  
 
-   //$result = add_comment($text);
+   
    // header('Content-Type: application/json');
-    echo json_encode($_POST);
+    echo json_encode($comment ->add_comment($text, $url, $name));
 }
 
 

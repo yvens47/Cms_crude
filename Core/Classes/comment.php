@@ -48,17 +48,21 @@ class Comment{
     }
 
     // insert a comment for a post
-    function  add_comment($content){
+    function  add_comment($content, $url, $name){  
+        // clean user inputs
+        $content = $this->db->safe($content) ;  
+        $name = $this->db->safe($name) ;  
+        $url = $this->db->safe($url) ; 
 
-       /* $sql ="insert into comment (`id`,`user_id`,`post_id`,`text`)
-         values(NULL, '$userd_id','$this->post_id', '$content')";
-
+       $sql ="insert into comment (`id`,`comment_name`,`url`,`post_id`,`text`) values
+        (NULL, '$name','$url','$this->post_id', '$content')"; 
+        echo $sql;      
          $result = $this->db->query($sql);
-
+            
          if($result)
-            return "comment is added";*/
+            return $msg['text'] = 'comment is added succesfully';
 
-            return ['text'=>$content];
+       
 
     }
 }

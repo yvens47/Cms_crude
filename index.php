@@ -41,29 +41,22 @@ $page->set_title("my home page");
 <h1> Latest Articles</h1>
 <div class='container'>
 	<div class='row'>
+  <?php   $feature = $article->latest(3); ?>
+
+  
+  <?php foreach ($feature as $key=> $post) :?>
+  
 		<div class='col-md-4 art-f'>
-    <a href='view.php?id=1'>
-	  	<img  class='img-fluid' src='https://cdn.pixabay.com/photo/2019/08/24/13/25/tunnel-4427609_960_720.jpg'/>
-     
-    </a>
-    <a href='index.php?category=1'><h2> Article One</h2></a>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p></a>
+      <a href='view.php?id=<?php echo $post['article_id'] ?>1'>
+        <img  class='img-fluid' src="<?php echo $post['images'] ?>"/>
+      
+      </a>
+        <a href='index.php?category=1'><h2> <?php echo substr($post['article_title'],0, 10); ?> </h2></a>
+        <p><?php echo substr($post['article_content'],0, 60)?></p></a>
     </div>
-		<div class='col-md-4 art-f'>
-    <a href='index.php?category=1'>
-		<img class='img-fluid' src='https://cdn.pixabay.com/photo/2019/08/25/13/34/dogs-4429513_960_720.jpg'/>
-		</a>
-    <a href='index.php?category=1'><h2> Article One</h2></a>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-    </a>
-    </div>
-		<div class='col-md-4 art-f'>
-    <a href='index.php?category=1'><a href='index.php?category=1'>
-		<img  class='img-fluid' src='https://cdn.pixabay.com/photo/2019/06/29/05/42/books-4305459_960_720.jpg'/>
-		</a>
-    <a href='index.php?category=1'><h2> Article One</h2></a>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-    </div>
+<?php endforeach; ?>
+		
+		
 	
 	</div>
 </div>
@@ -87,28 +80,36 @@ $page->set_title("my home page");
   
   
    
-    $per_page=5;
-    $current_page = isset($_GET['page'])? $_GET['page']  : 1;
-   
-    $total_count= $db->count_rows();   
+  $per_page=2;
+  if(isset($_GET['page']) ){
 
-    $paging = new Pagination($per_page, $current_page, $total_count);
+    $current_page = $_GET['page'];
+  }else{
+    $current_page = 1;
+  }
+   // $current_page = isset($_GET['page'])? $_GET['page']  : 1;
+   
+    $total_count= $db->count_rows();  
+   
+
+    $paging = new Pagination( $current_page, $per_page, $total_count);
+      
 
   ?>
-	
-	<?php  $article->display_all(6, 10); ?>		
 
+	<?php  $article->display_all($per_page, $paging->offset()); ?>	
+  
+ 
 
 				<nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
     <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+      <?php //echo  $paging ->previous_link($url="") ?>
     </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    
+    <?php  echo $paging-> page_links($url='') ;?>
     <li class="page-item">
-      <a class="page-link" href="#">Next</a>
+      <?php // $paging-> next_link($url="")?>
     </li>
   </ul>
 </nav>
@@ -120,12 +121,12 @@ $page->set_title("my home page");
 	<div class="col-md-4">
 		<div class='subs'>
 
-		<h2>CSS Newsletter</h2>
+		<h2>Newsletter</h2>
 
 <form action="/action_page.php">
   <div class="container">
     <h3>Subscribe to our Newsletter</h3>
-    <p>Lorem ipsum text about why you should subscribe to our newsletter blabla. Lorem ipsum text about why you should subscribe to our newsletter blabla.</p>
+    <p>Lslorem ipsum text about why you should subscribe to our newetter blabla.</p>
   </div>
 
   <div class="container" style="background-color:white">
@@ -160,6 +161,7 @@ $page->set_title("my home page");
 		<div class='realated'>
 <h2>Most Popular</h2>
  <div class='article_wrap'>
+ 
 
  <ul class="">
   <li class="">

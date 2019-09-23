@@ -1,4 +1,7 @@
-<?php require_once ("Core/init.php"); ?>
+<?php 
+//require ABSPATH ."/config/config.php";
+
+require_once ("init.php"); ?>
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     

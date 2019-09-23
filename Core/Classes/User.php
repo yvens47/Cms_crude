@@ -74,11 +74,13 @@ class User {
         $r = $this->db->query("SELECT `user_id`,`user_email` from login where user_email = '$email'");
 
         print_r($r);
+
         if ($r->num_rows === 1) {
 
             // user is a member; email new random password;
             $string ='abcdefghijklmnopqrstuvwxyz0123456789';
             $newstring = "";
+           
 
             for($i=0; $i < 8; $i++){
                 
@@ -86,6 +88,8 @@ class User {
 
                 $newstring .= strval( $string[$rand]);
             }
+           
+
             $id = $r->fetch_assoc()['user_id'];
             // create a random password  and insert into the user's  account
             $new_password = $newstring; // to be mailed to user;
@@ -99,7 +103,7 @@ class User {
             // email user new password
             $to = $r->fetch_assoc()['user_email'];
             $subject =  "Below is your new password <br/> ".$new_password;
-            mail($to, "Updated Password",$subject);
+            echo  mail($to, "Updated Password",$subject)==false;
 
             }
             

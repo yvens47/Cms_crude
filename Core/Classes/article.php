@@ -18,6 +18,7 @@ class Article {
     public $content;
     protected $db;
     
+    
 
     function __construct($db) {
         $this->db = $db;
@@ -66,9 +67,9 @@ class Article {
             <span class='badge badge-pill badge-info'>19 comments</span>"."</p>"."
             
            
-            
+            <a href='view.php?id=$id'>
             <img src='$images_placeholder[$int]' class='pimg img-fluid img-thumbnail float-left'>". 
-            
+            "</a>".
             "<div class='pwra'>".
            
             
@@ -89,7 +90,8 @@ class Article {
         if (is_int((int)$article_id)) {
             $id = filter_var(intval($article_id), FILTER_VALIDATE_INT);            
             // send query to db for article
-            $sql = "Select * from articles where article_id ='$id'";      
+            $sql = "Select * from articles where article_id ='$id'";  
+
             $query = $this->db->query($sql);             
             
             if ($query->num_rows == 1) {               
@@ -98,6 +100,7 @@ class Article {
                 return $row;
                 
             }else{
+
                 echo "Article is not found";
             }
 
@@ -113,16 +116,70 @@ class Article {
 
     function categories(){
 
-        $sql = "select * from categorie_names";
+        $sql = "select * from categories";
        
         $query = $this->db->query($sql);  
        
         
         while( $row = $query->fetch_assoc()){
 
-            echo "<a href='index.php?category={$row['cat_id']}' class='scan.business btn btn-warning'><span class='cat'> {$row['name']} </span></a> ";
+            echo "<a href='index.php?category={$row['id']}' class='scan.business btn btn-warning'><span class='cat'> {$row['name']} </span></a> ";
         }
 
+
+
+
+    }
+
+    function latest($num){
+
+        $sql = "Select * from articles limit {$num}";
+
+        $query = $this->db->query($sql);
+
+        $rows = array();
+
+        while($row = $query->fetch_assoc()){
+            
+            $rows[] = $row;
+        }
+
+        return $rows;
+        
+
+    }
+
+    function add($title, $category, $image, $content){
+
+        $this->title= $this->db->safe($title);
+        $this->content= $this->db->safe($content);
+        $category= $this->db->safe($category);
+        $image  = $image;
+        
+        //insert post into articles
+        $sql ="INSERT INTO `articles` (`article_id`, `user_id`, `article_title`, 
+                    `article_content`, `category`, `article_date_posted`, `images`)
+                    values(NULL, '1','$this->title','$this->content','$category', '$image')";
+
+        $result = $this->db->query($sql);
+        if($result){
+            //get last inserted id ;
+            $last_insert_id = $this->db->connect()->insert_id();
+            echo $last_insert_id;
+
+             $sql ="insert into categories (`id`, 'post_id`,`name`) 
+                    values(NULL, '$last_insert_id', '$category')";
+             $result = $this->db->query($sql);
+
+        }
+
+        $this->db->connect()->close();
+
+        
+
+       // insert category to  category table with postid;
+
+       // save  image Images/Articles forlder;
 
 
 

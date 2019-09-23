@@ -7,7 +7,7 @@
             <form class="form-signin" method="post"  name="login">
 
                 <h1 class="h3 mb-3 font-weight-normal">Let's find your account</h1>
-                <p class="lead">please enter your email below</p>
+                <p class="lead" style='text-align:center'>please enter your email below</p>
                 <label for="inputEmail" class="sr-only">Enter Email</label>
 
                 <input type="text" name ='user_email' id="inputEmail" 
