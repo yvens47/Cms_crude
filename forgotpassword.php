@@ -9,8 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['user_email'])) {
 
         $email = $_POST['user_email'];
-        // validate email;
 
+        // validate email;
         if ($validator->email_validation($email) == FALSE) {
 
             $error = " Invalid email";
@@ -28,11 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 <?php require_once("Template/header.php"); ?>
-
-
 <div class="wrapper-login">
     <?php require_once 'Template/forgot_password_form.php'; ?>
 </div>
-
 
 <?php require_once("Template/footer.php"); ?>

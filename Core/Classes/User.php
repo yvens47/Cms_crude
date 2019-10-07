@@ -19,6 +19,26 @@ class User {
         $this->db = $db;
     }
 
+
+    /**
+     * 
+     * if user is logged in session will set to true otherwise false
+     * is_logged_in
+     *
+     * @return
+     */
+    function is_logged_in(){
+
+         return (isset($_SESSION['logged'])) ? true : false;
+    }
+    /**
+     * login
+     *
+     * @param  mixed $email
+     * @param  mixed $password
+     *
+     * @return void
+     */
     function login($email, $password) {
 
         $r = $this->db->query("SELECT * from login where user_email = '$email'
@@ -28,7 +48,7 @@ class User {
             // Log user in , send protected 
 
             $row = $r->fetch_assoc();
-            $_SESSION = $row['article_id'];
+           // $_SESSION = $row['article_id'];
             $_SESSION['logged'] = "yes";
             $_SESSION['user_role'] = ($row['user_role']);
             $username = explode('@', $row['user_email']);

@@ -56,7 +56,7 @@
                         <a class="nav-link" href="/CMS_Crude">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">Blog</a>
                     </li>
 
                     

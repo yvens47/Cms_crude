@@ -54,7 +54,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <div class='row'>
         <div class='col-md-3'>
-         <?php require_once("Template/member_left_sidebar.php"); ?>
+         <?php //require_once("Template/member_left_sidebar.php"); ?>
+
+                  <div class="panel mt-5">
+                    <div class="panel-heading">Userst</div>
+                    <div class="panel-body">
+                        <ul class="list-group list-group-flush">
+                             <li class="list-group-item"> <a href="?id=1"> <i class="material-icons icons">person_pin</i>All Users</a></li>
+                             <li class="list-group-item"> <a href="?id=2"> <i class="material-icons icons">edit</i> Add User</a></li>
+
+                            <li class="list-group-item"> <a href="?id=3"> <i class="material-icons icons">settings_applications</i>Your Profile</a></li>
+                            
+                             <li class="list-group-item"> <a href="/UxEstate/logout.php"> <i class="material-icons icons">edit</i>Sign out</a></li>
+
+                            
+                      </ul>
+                    
+                    </div>
+                                   
+                  </div>
+
+                   <div class="panel mt-3">
+                    <div class="panel-heading">Post</div>
+                    <div class="panel-body">
+                        <ul class="list-group list-group-flush">
+                             <li class="list-group-item"> <a href="/CMS_Crude/home.php"> <i class="material-icons icons">person_pin</i>Posts</a></li>
+                             <li class="list-group-item"> <a href="/CMS_Crude/home.php?page=add"> <i class="material-icons icons">edit</i> Add Post</a></li>
+
+                            <li class="list-group-item"> <a href="?id=3"> <i class="material-icons icons">settings_applications</i>Settings</a></li>
+                            
+                             <li class="list-group-item"> <a href="/UxEstate/logout.php"> <i class="material-icons icons">edit</i>Sign out</a></li>
+
+                            
+                      </ul>
+                    
+                    </div>
+                                   
+                  </div>
+
+
+
+
          </div>
 
          <div class='col-md-9'>
@@ -140,21 +180,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               
              </div>
              <!-- filter ends here --->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                  <th scope="col">Title</th>
+                  <th scope="col">Author</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Comment</th>
+                   <th scope="col">Date</th>
+                </tr>
+              
+            </thead>
+
+            <tbody>
+              <tr v-for='post in postLists[0]'>
+                <td> <strong v-html='post.article_title'></strong></td>
+                <td>{{post.user_id}}</td>
+                <td>{{post.name}}</td>
+                <td></td>
+                <td><p>{{post.article_date_posted}}</p></td>
+              </tr>
+
+            </tbody>
+
+
+          </table>
              
-          <div class='post home-post' v-for='post in postLists[0] '> 
-           
-            <div class='post_img thumb'>
-            <img :src='post.images' :alt='post.article_title'/>      </div>
-            <h2 v-html='post.article_title'></h2>
-            <p>{{post.article_date_posted}}</p>
-            <div class=''>
-              <a class='btn  btn-info' href="http://"  >Edit</a>
-              <a  class='btn  btn-danger' href=''>Delete</a>
-            </div>
-           <!-- <div class='' v-html='post.article_content'></div>-->
-          </div>
           
-        	<?php // $article->display_all(10,0); ?>	
+        	<?php //print_r($article->display_all(10,0)); ?>	
 
 
         <?php endif; ?>
@@ -178,6 +231,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                       
                     
            
+            <!-- left sidebar -->
+          <div class='col-md-2'>hello</div>
+
+          <!-- left sidebar end here -->
          </div>
 
 

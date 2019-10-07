@@ -36,7 +36,9 @@ class PostApi extends Article{
     }
 
     function posts(){
-        $sql ="select * from articles ";
+        $sql ="select * from articles ";$sql = "SELECT * FROM `articles` LEFT JOIN categories
+         ON categories.id = articles.category;";
+
        // print_r($this->find_by_sql($sql));
       
         

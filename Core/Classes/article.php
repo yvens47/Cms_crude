@@ -37,7 +37,8 @@ class Article {
 
     function display_all($limit, $offset) {
         
-        $sql = "Select * from articles limit {$limit} offset {$offset}";
+        $sql = "SELECT * FROM `articles` LEFT JOIN categories
+         ON categories.id = articles.category  LIMIT {$limit} offset {$offset}";
         
         $query = $this->db->query($sql); 
         $images_placeholder = array(
@@ -54,11 +55,14 @@ class Article {
             $int = rand(0,count($images_placeholder)-1);
 
             $title =substr($row['article_title'],0,30);
-            $content = substr($row['article_content'], 0, 150);
+            $content = substr($row['article_content'], 0, 300);
             $date = $row['article_date_posted'];
             $id = $row['article_id'];
+            $categoy = $row['name'];
             
             $author_name = $this->author($row['user_id']);
+
+           
             
             echo "<div class='post'> 
             <h1 class='ptitle'><a href='view.php?id=$id'>$title</a></h1>
@@ -184,5 +188,34 @@ class Article {
 
 
     }
+
+    function display_by_category($cat){
+        $sql = "    SELECT * FROM `articles` 
+                    join categories on category = categories.id
+                    where categories.name = '$cat'";    
+
+        $result = $this->db->query($sql);
+        
+        if($result->num_rows ==  0){
+
+            echo "<h3> No post in this category yet. Be the first to add an article</h3>";
+             
+        }
+        else if($result  == 1){
+            $row =  $result->fetch_assoc();
+
+            $output =" <div class='post'>  
+                     <h1 class='ptitle'>  {$row['article_title']} </h1> </div>";
+           
+            
+        }else{
+
+           
+        }
+
+
+    }
+
+    
 
 }

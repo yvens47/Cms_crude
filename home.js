@@ -14,6 +14,8 @@ oReq.addEventListener("load", reqListener);
 oReq.open("GET", "http://localhost:8080/CMS_Crude/ajax/post.php");
 oReq.send();
 
+console.log(posts);
+
 
 var app = new Vue({
   el: '#main',

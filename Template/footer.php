@@ -11,13 +11,14 @@
 			<div class='col-md-12'>
 				<div class='social-links' style='text-align: center; '>
 				<a href='' class='facebook'> </a>
-				<a href='' class='twittter'> </a>
-				<a href='' class='Instagram'> </a>
+				<a href='' class='twitter'> </a>
+				<!-- <a href='' class='Instagram'> </a> -->
+				<a href="http://" class="pinterest"></a>
 			
 			</div>
 			</div>
 
-			<div class='col-md-12'>
+			<div class='col-md-12 mt-3'>
 				<a class='link' href='#'>About us</a>
 				<a class='link'  href='#'>Articles</a>
 				<a class='link'  href='#'>Articles</a>

@@ -3,12 +3,7 @@
 </div>
     <div class="row">
         <div class="col-md-4 center form_wrapper">
-       <img class="img-fluid" src="https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png" style="
-    position: absolute;
-    top: -10vh;
-    width: 25%;
-    left: 35%;
-">
+       <img class="img-fluid login-image" src="https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png"/>
 
 
             <form class="form-signin" method="post"  name="login">

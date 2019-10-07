@@ -24,9 +24,10 @@ $page->set_title("my home page");
   "web"=>"SEO") ?> 
   <p>
 
-  <?php foreach($category  as $k => $var)
+  <?php
   
-	echo "<button class='btn btn-default'><scan class='$k'>".$var ."</span></button>";
+  foreach($category  as $k => $var)  
+	    echo "<a href='articles.php?cat=$var' class=' categories btn btn-default'><scan class='$k'>".$var ."</span></a>";
  ?>
   
   
@@ -38,7 +39,7 @@ $page->set_title("my home page");
 
 </div>
 <div class='feature'>
-<h1> Latest Articles</h1>
+<h1> Latest <span style='color:#c7c7c7'> Articles</span></h1>
 <div class='container'>
 	<div class='row'>
   <?php   $feature = $article->latest(3); ?>

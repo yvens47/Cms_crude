@@ -58,11 +58,9 @@
                         <a class="nav-link" href="/CMS_Crude">Home <span class="sr-only">(current)</span></a>
                     </li>
                      <li class="nav-item active">
-                        <a class="nav-link" href="/CMS_Crude">Articles <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/CMS_Crude">Blog <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
+                   
 
                     
                         <form class="form-inline center" action='search.php' method='get'>

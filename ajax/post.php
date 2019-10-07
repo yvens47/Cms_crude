@@ -20,4 +20,5 @@ $db = new Database(DBHOST,DATABASE, USER, PASSWORD,"login");
 require 'api.php';
 ini_set('memory_limit', '1024M'); // o
 $post = new PostApi($db);
+//print_r($post);
 echo json_encode($post->posts());
