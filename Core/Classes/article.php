@@ -89,6 +89,35 @@ class Article {
 
         
     }
+    function update( $id, $title, $category, $content, $updated){
+
+        $sql ="update articles 
+        set article_title='$title',
+        category='$category',
+        article_content ='$content'
+        where article_id ='$id';";  
+    
+        $query = $this->db->query($sql);  
+        if($query){                      
+            header('location: http://localhost:8080/CMS_Crude/home.php');
+            exit();
+        }
+
+       // return $query->fetch_assoc();
+
+
+    }
+
+    function edit($id){
+
+         $sql = "Select * from articles where article_id ='$id'"; 
+         $query = $this->db->query($sql);  
+
+         return $query->fetch_assoc();
+
+    }
+
+
 
     function view($article_id) {             
         if (is_int((int)$article_id)) {

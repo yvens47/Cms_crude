@@ -773,6 +773,27 @@ div#exampleModalLong button{
     transition: all 1s;
 }
 
+.row-action span a {
+    border-right: solid 1px #c3c3c3;
+    padding: 0px 5px 0 0;
+    color: #91bff9;
+    height:auto;
+    overflow:auto
+
+}
+
+.row-action {
+    margin-top: 2px;
+    
+    padding: 3px 0 3px 0px;
+}
+
+.record {
+
+    height: 85px;
+
+}
+
 
 /* animations ****/
 

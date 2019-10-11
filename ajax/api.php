@@ -36,8 +36,9 @@ class PostApi extends Article{
     }
 
     function posts(){
-        $sql ="select * from articles ";$sql = "SELECT * FROM `articles` LEFT JOIN categories
-         ON categories.id = articles.category;";
+       
+            $sql = "SELECT * FROM `articles` LEFT JOIN (categories,login)
+         ON (categories.id = articles.category and login.user_id = articles.user_id )";
 
        // print_r($this->find_by_sql($sql));
       
@@ -52,8 +53,17 @@ class PostApi extends Article{
        }
 
        
+       
         
         return $posts;
+    }
+
+    function delete($id){
+        $id  = (int)(intval($id));
+        $sql = "delete from articles where articles.article_id = '$id'";
+        $result = $this->db->query($sql); 
+        return  $result ? 'delete' : "delete fail";
+
     }
 
 

@@ -48,9 +48,9 @@ class User {
             // Log user in , send protected 
 
             $row = $r->fetch_assoc();
-           // $_SESSION = $row['article_id'];
+           //$_SESSION = $row['article_id'];
             $_SESSION['logged'] = "yes";
-            $_SESSION['user_role'] = ($row['user_role']);
+           // $_SESSION['user_role'] = ($row['user_role']);
             $username = explode('@', $row['user_email']);
             $_SESSION['user_email'] = $username[0];
             return true;

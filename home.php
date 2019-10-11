@@ -1,21 +1,21 @@
 <?php
 session_start();
-if (!isset($_SESSION['logged'])) {
-
+require_once ("init.php");
+if (!$user->is_logged_in()) {
     header("location:/CMS_Crude/");
-
     exit();
 }
 ?>
 
 
 <?php
-require_once ("init.php");
+
 
 $article = new Article($db);
 
 $page = new Page("Member area", "Welcome member ");
 $title = $page->get_title();
+
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -27,12 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
       if (isset($_FILES) && !empty($_FILES)) {
-
-
+        print_r($_POST);
         $filename = $_FILES['file']['name'];
         $tmp_name = $_FILES['file']['tmp_name'];
         $dir = dirname(__FILE__);
-        (move_uploaded_file($tmp_name, "$dir/Images/$filename"));
+        (move_uploaded_file($tmp_name, "$dir/Images/$filename"));       
 
         $article->add($title, $category,$filename,$content);
         
@@ -81,9 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                              <li class="list-group-item"> <a href="/CMS_Crude/home.php"> <i class="material-icons icons">person_pin</i>Posts</a></li>
                              <li class="list-group-item"> <a href="/CMS_Crude/home.php?page=add"> <i class="material-icons icons">edit</i> Add Post</a></li>
 
-                            <li class="list-group-item"> <a href="?id=3"> <i class="material-icons icons">settings_applications</i>Settings</a></li>
                             
-                             <li class="list-group-item"> <a href="/UxEstate/logout.php"> <i class="material-icons icons">edit</i>Sign out</a></li>
 
                             
                       </ul>
@@ -100,73 +97,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          <div class='col-md-9'>
 
             <div class='main_content' id='main'>
-            {{message}}
+           
        
       <div class="tab-content" id="v-pills-tabContent">
       <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
       
-          <?php if (isset($_GET['page'])):?>
+          <?php if (isset($_GET['page']) && $_GET['page'] =='add'):?>
           
-          <div class='filter'>
-                <h1>Add a post</h1>
-                
+          <!-- filter for post -->
+          <div class='add-post'>
+                <h1>Add a post</h1>           
               
-             </div>
+          </div>
+           <!-- filter for post -->
 
-          <!-- <div class='toolbar'></div>
-          <div class='text-editor'></div>
-          <div class='post_btn'><button class='btn btn-primary post-it'>Post</button> -->
-
+        
           <div class='row'>
-
             <div class='col-md-12'>
- <form  class='' method='post' enctype="multipart/form-data" action='<?php echo $_SERVER['PHP_SELF'] ?>' >
-  <div class="form-group row">
-  <div class='col-sm-4'>
-    <label for="exampleFormControlInput1">Title</label>
-    <input name='title' type="text" class="form-control" id="exampleFormControlInput1" placeholder="enter a title">
-  </div>
-  </div>
-  <div class="form-group row">
-  <div class='col-sm-4'>
-    <label for="exampleFormControlSelect1">Categorie</label>
-    <select name='category' class="form-control" id="exampleFormControlSelect1">
-    <?php $category = array("business"=>"Finance", "programming"=>"Programming",   "web"=>"SEO") ?> 
-      <?php foreach($category as $cat) :?>
-      <option><?php echo $cat ?></option>
-      <?php endforeach; ?>
-     
-    </select>
-    </div>
-  </div>
-  
-  <div class="form-group">
-  
-    <label for="exampleFormControlTextarea1">Content</label>
-    <textarea name='content' class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
-  </div>
-
-  <div class="form-group row">
-    <div class='col-sm-4'>
-    <label for="exampleFormControlTextarea1">Upload</label>
-    <input type="file" name="file" class="form-control">
-    </div>
-    
-  </div>
-
-
-  <div class="form-group">
-   
-    <input type="submit" value="Post" class='btn btn-primary'>
-  </div>
-</form>
+              <!-- Add form --->
+              <?php require_once("Template/add-post-form.php"); ?>
+              <!-- Add form --->
             </div>
-
-
-
           </div>
 
-
+         <?php elseif (isset($_GET['edit'])): ?>
+            <h1>Edit post </h1>
+            <div class='row'>
+            <div class='col-md-12'>
+              <!-- Edit form --->
+              <?php require_once("Template/edit-post.php"); ?>
+              <!-- edit form --->
+            </div>
+          </div>
               
 
          <?php else: ?>
@@ -180,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               
              </div>
              <!-- filter ends here --->
-          <table class="table table-striped">
+          <table class="table stripped" id='table'>
             <thead>
               <tr>
                   <th scope="col">Title</th>
@@ -192,16 +154,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               
             </thead>
 
-            <tbody>
-              <tr v-for='post in postLists[0]'>
-                <td> <strong v-html='post.article_title'></strong></td>
-                <td>{{post.user_id}}</td>
+         
+              <tr class='record' v-for='post in postLists[0]'>
+              {{post}}
+                <td> 
+                <div class="title-wrap">
+                {{post.article_title}}            
+                
+                </div> 
+                <div class="row-action">
+                <span><a  :href="'Admin/preview.php?id='+post.article_id">preview</a></span>
+                 <span><a :href="'home.php?edit='+post.article_id">edit</a></span>
+                  <span><a  v-bind:data-id= 'post.article_id' class='delete'  :href="'home.php?delete='+post.article_id">delete</a></span>
+               
+               
+                </div>
+                
+                </td>
+                <td>{{post.user_full_name}}</td>
                 <td>{{post.name}}</td>
                 <td></td>
                 <td><p>{{post.article_date_posted}}</p></td>
               </tr>
 
-            </tbody>
+           
 
 
           </table>
@@ -305,53 +281,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
           <script src='/CMS_Crude/home.js'></script>; 
         
-       <?php endif ?>
+ <?php endif ?>
 
-<!-- Main Quill library -->
-<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
 
-<!-- Theme included stylesheets -->
-<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
-
-<!-- Core build with no theme, formatting, non-essential modules -->
-<link href="//cdn.quilljs.com/1.3.6/quill.core.css" rel="stylesheet">
-<script src="//cdn.quilljs.com/1.3.6/quill.core.js"></script>
-<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
-<script>
-var toolbarOptions = [
-  ['link','image'],
-  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-  ['blockquote', 'code-block'],
-
-  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-  [{ 'direction': 'rtl' }],                         // text direction
-
-  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-  [{ 'font': [] }],
-  [{ 'align': [] }],
-
-  ['clean']                                         // remove formatting button
-];
-
-var options = {
-  debug: 'info',
-  modules: {
-    toolbar: '.toolbar',
-    toolbar: toolbarOptions
-  },
-  placeholder: 'start writing...',
-  readOnly: false,
-  theme: 'snow'
-};
-
-var editor = new Quill('.text-editor', options); 
-</script>

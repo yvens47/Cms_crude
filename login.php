@@ -1,8 +1,10 @@
 <?php
 session_start();
+require_once ("init.php");
 
 //user looged in send restricted page
-if (isset($_SESSION['logged'])) {
+if ($user->isis_logged_in()) {
+    
     unset($_SESSION['register_success']);
     unset($_SESSION['email_registered']);
     header("Location: home.php");
@@ -11,7 +13,7 @@ if (isset($_SESSION['logged'])) {
 ?>
 
 <?php
-require_once ("init.php");
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
