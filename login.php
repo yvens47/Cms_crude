@@ -3,7 +3,7 @@ session_start();
 require_once ("init.php");
 
 //user looged in send restricted page
-if ($user->isis_logged_in()) {
+if ($user->is_logged_in()) {
     
     unset($_SESSION['register_success']);
     unset($_SESSION['email_registered']);

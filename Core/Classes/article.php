@@ -17,6 +17,7 @@ class Article {
     public $title;
     public $content;
     protected $db;
+    protected $views;
     
     
 
@@ -29,6 +30,10 @@ class Article {
         
         $result = $this->db->query($sql);
         return  $result->fetch_assoc()['user_full_name'];
+
+    }
+    
+    function views_count(){
 
     }
 
@@ -90,12 +95,17 @@ class Article {
         
     }
     function update( $id, $title, $category, $content, $updated){
+        
+
+        $content = addslashes( $content);
 
         $sql ="update articles 
         set article_title='$title',
         category='$category',
         article_content ='$content'
         where article_id ='$id';";  
+        echo "<code>". $sql ."<code>";
+
     
         $query = $this->db->query($sql);  
         if($query){                      
@@ -111,30 +121,33 @@ class Article {
     function edit($id){
 
          $sql = "Select * from articles where article_id ='$id'"; 
-         $query = $this->db->query($sql);  
-
+         $query = $this->db->query($sql); 
          return $query->fetch_assoc();
 
     }
 
 
 
-    function view($article_id) {             
-        if (is_int((int)$article_id)) {
-            $id = filter_var(intval($article_id), FILTER_VALIDATE_INT);            
+    function view($article_id) {   
+         
+       $article_id = $this->db->safe_string($article_id);  
+       echo $article_id;     
+        if (is_int((int)intval($article_id))) {     
+         
+            $id = (int) intval($article_id)   ;            
             // send query to db for article
-            $sql = "Select * from articles where article_id ='$id'";  
+            $sql = "Select * from articles where article_id ='$id'";             
 
             $query = $this->db->query($sql);             
             
             if ($query->num_rows == 1) {               
-                $row = mysqli_fetch_assoc($query);                
+                $row = mysqli_fetch_assoc($query);     
                 
                 return $row;
                 
             }else{
 
-                echo "Article is not found";
+                return  "Article is not found";
             }
 
         }else{
@@ -166,55 +179,38 @@ class Article {
 
     function latest($num){
 
-        $sql = "Select * from articles limit {$num}";
-
+        $sql = "Select * from articles limit {$num}";      
         $query = $this->db->query($sql);
-
         $rows = array();
-
-        while($row = $query->fetch_assoc()){
-            
+        while($row = $query->fetch_assoc()){            
             $rows[] = $row;
         }
-
-        return $rows;
-        
+        return $rows;      
 
     }
 
     function add($title, $category, $image, $content){
 
-        $this->title= $this->db->safe($title);
-        $this->content= $this->db->safe($content);
-        $category= $this->db->safe($category);
+        $this->title= $this->db->safe_string($title);
+        $this->content= $this->db->safe_string($content);
+        $category= $this->db->safe_string($category);
         $image  = $image;
+       
         
         //insert post into articles
         $sql ="INSERT INTO `articles` (`article_id`, `user_id`, `article_title`, 
                     `article_content`, `category`, `article_date_posted`, `images`)
-                    values(NULL, '1','$this->title','$this->content','$category', '$image')";
+                    values(NULL, '1','$this->title','$this->content','$category', Now(),'$image')";
 
         $result = $this->db->query($sql);
+        echo $sql;
+       
         if($result){
-            //get last inserted id ;
-            $last_insert_id = $this->db->connect()->insert_id();
-            echo $last_insert_id;
-
-             $sql ="insert into categories (`id`, 'post_id`,`name`) 
-                    values(NULL, '$last_insert_id', '$category')";
-             $result = $this->db->query($sql);
+           echo 'Post added';
 
         }
 
         $this->db->connect()->close();
-
-        
-
-       // insert category to  category table with postid;
-
-       // save  image Images/Articles forlder;
-
-
 
     }
 

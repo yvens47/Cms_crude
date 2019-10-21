@@ -40,20 +40,20 @@ $page->set_title("my home page");
 </div>
 <div class='feature'>
 <h1> Latest <span style='color:#c7c7c7'> Articles</span></h1>
-<div class='container'>
+<div class='container-fluid'>
 	<div class='row'>
   <?php   $feature = $article->latest(3); ?>
 
   
-  <?php foreach ($feature as $key=> $post) :?>
+  <?php foreach ($feature as $key=> $post) :?> 
   
 		<div class='col-md-4 art-f'>
-      <a href='view.php?id=<?php echo $post['article_id'] ?>1'>
+      <a href='view.php?id=<?php  echo $post['article_id'] ?>'>
         <img  class='img-fluid' src="<?php echo $post['images'] ?>"/>
       
       </a>
         <a href='index.php?category=1'><h2> <?php echo substr($post['article_title'],0, 10); ?> </h2></a>
-        <p><?php echo substr($post['article_content'],0, 60)?></p></a>
+        <p><?php echo substr($post['article_content'],0, 80)?></p></a>
     </div>
 <?php endforeach; ?>
 		
@@ -67,7 +67,7 @@ $page->set_title("my home page");
 
 
  <div class="wrapper">
-<div class="container">
+<div class="container-fluid">
 
 <div class="row">
 
@@ -75,13 +75,13 @@ $page->set_title("my home page");
 
 
 
-	<div class="col-md-8">
+	<div class="col-md-7">
 
   <?php 
   
   
    
-  $per_page=2;
+  $per_page=5;
   if(isset($_GET['page']) ){
 
     $current_page = $_GET['page'];
@@ -119,7 +119,7 @@ $page->set_title("my home page");
 		</div>
 			<!-- Sidebar-->
 
-	<div class="col-md-4">
+	<div class="col-md-5">
 		<div class='subs'>
 
 		<h2>Newsletter</h2>
@@ -160,32 +160,42 @@ $page->set_title("my home page");
 
 
 		<div class='realated'>
-<h2>Most Popular</h2>
- <div class='article_wrap'>
- 
-
- <ul class="">
-  <li class="">
-    <p>Cras justo odio lipsume content </p>
-    <img class='img-fluid' src='https://cdn.pixabay.com/photo/2019/08/24/22/21/child-4428504_960_720.jpg'/>
-  </li>
-
-
-  <li class="">
-    <p>Cras justo odio lipsume content </p>
-    <img class='img-fluid' src='https://cdn.pixabay.com/photo/2019/08/23/20/06/landscape-4426419_960_720.jpg'/>
+<h2>Recent Post</h2>
+ <div class='article_wrap container'>
+    <div class="row mb-2">
+      <div class="col-md-3 p-0">
+        <img  style='height:130px; width:100%' src='https://images.unsplash.com/photo-1571605558168-ace5109d29ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60' class="img-thumbnail"/>
+      </div>
+      <div class="col-md-9">
+      <p><a href='http://localhost:8080/CMS_Crude/view.php?id=110'>Lorem ipsum dolor sit amet, consectetur adipiscing</a> </p>
+      
+      </div>     
     
-  </li>
+    </div>
 
+     <div class="row mb-2">
+      <div class="col-md-3 p-0">
+              <img  style='height:130px; width:100%' src='https://images.unsplash.com/photo-1571637928227-e5ec14ecb8a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60' class="img-thumbnail"/>
+    </div>
+      <div class="col-md-9">
+            <p><a href='http://localhost:8080/CMS_Crude/view.php?id=101'>Lorem ipsum dolor sit amet, consectetur adipiscing</a> </p>
 
-  <li class="">
-    <p>Cras justo odio lipsume content </p>
-    <img class='img-fluid' src='https://cdn.pixabay.com/photo/2019/03/19/19/54/polyommatus-icarus-4066785_960_720.jpg'/>
-  </li>
-  
-</ul>
+      </div>     
+    
+    </div>
 
+     <div class="row">
+      <div class="col-md-3 p-0">
+      <img  style='height:130px; width:100%' src='https://images.unsplash.com/photo-1571624750891-64dfc55a984b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60' class="img-thumbnail"/>
 
+      </div>
+      <div class="col-md-9">
+        <p><a href='http://localhost:8080/CMS_Crude/view.php?id=109'>Lorem ipsum dolor sit amet, consectetur adipiscing</a> </p>
+
+      
+      </div>     
+    
+    </div>
  </div>
 
 

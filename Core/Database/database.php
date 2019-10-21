@@ -41,9 +41,13 @@ class Database
 	}	
 
 	// clean user input before enter to db
-	function safe($string){
+	function safe_string($string){
 
-		return $this->connect()->real_escape_string($string);
+		$string = trim($string);
+		$string = htmlspecialchars($string);
+		$string = addslashes($string);
+
+		return ($string);
 	}
 
 
@@ -68,5 +72,7 @@ class Database
 	function close_db(){
 		$this->link->close();
 	}
+
+	
 	
 }

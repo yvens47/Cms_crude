@@ -13,6 +13,7 @@ if(!$user->is_logged_in()){
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
 $title = $_POST['title'];
 $category = $_POST['category'];
 $content = trim($_POST['content']);

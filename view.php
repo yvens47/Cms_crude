@@ -18,18 +18,8 @@ $page->set_title("view");
 
 
 <div class='post_wrapper wrapper'>
-<!--
-<div class="jumbotron">
-<div class='container'>
 
-	
-  <h1 class="display-4"> CMS Crude</h1>
-  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis malesuada dui, vitae posuere ligula mattis vitae.</p>
-  <hr class="my-4">
-  
-</div>
 
-</div>-->
 
 <div class='container'>
 
@@ -111,30 +101,41 @@ $page->set_title("view");
 </div>
 <div class='realated'>
 <h2>Other Post You might Enjoy</h2>
- <div class='article_wrap'>
-
- <ul class="">
-  <li class="">
-    <p>Cras justo odio lipsume content </p>
-    <img class='img-fluid' src='https://cdn.pixabay.com/photo/2019/08/24/22/21/child-4428504_960_720.jpg'/>
-  </li>
-
-
-  <li class="">
-    <p>Cras justo odio lipsume content </p>
-    <img class='img-fluid' src='https://cdn.pixabay.com/photo/2019/08/23/20/06/landscape-4426419_960_720.jpg'/>
+ <div class="article_wrap container">
+    <div class="row mb-2">
+      <div class="col-md-3 p-0">
+        <img style="height:130px; width:100%" src="https://images.unsplash.com/photo-1571605558168-ace5109d29ee?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" class="img-thumbnail">
+      </div>
+      <div class="col-md-9">
+      <p><a href="">Lorem ipsum dolor sit amet, consectetur adipiscing</a> </p>
+      
+      </div>     
     
-  </li>
+    </div>
 
+     <div class="row mb-2">
+      <div class="col-md-3 p-0">
+              <img style="height:130px; width:100%" src="https://images.unsplash.com/photo-1571637928227-e5ec14ecb8a0?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" class="img-thumbnail">
+    </div>
+      <div class="col-md-9">
+            <p><a href="">Lorem ipsum dolor sit amet, consectetur adipiscing</a> </p>
 
-  <li class="">
-    <p>Cras justo odio lipsume content </p>
-    <img class='img-fluid' src='https://cdn.pixabay.com/photo/2019/03/19/19/54/polyommatus-icarus-4066785_960_720.jpg'/>
-  </li>
-  
-</ul>
+      </div>     
+    
+    </div>
 
+     <div class="row">
+      <div class="col-md-3 p-0">
+      <img style="height:130px; width:100%" src="https://images.unsplash.com/photo-1571624750891-64dfc55a984b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" class="img-thumbnail">
 
+      </div>
+      <div class="col-md-9">
+        <p><a href="">Lorem ipsum dolor sit amet, consectetur adipiscing</a> </p>
+
+      
+      </div>     
+    
+    </div>
  </div>
 
 </div>

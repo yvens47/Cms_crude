@@ -11,9 +11,10 @@
     <label for="exampleFormControlSelect1">Categorie</label>
     <select name='category' class="form-control" id="exampleFormControlSelect1">
     <?php $category = array("business"=>"Finance", "programming"=>"Programming",   "web"=>"SEO") ?> 
-      <?php foreach($category as $cat) :?>
-      <option><?php echo $cat ?></option>
-      <?php endforeach; ?>
+      
+      <?php $num =1; foreach($category as $cat) :?>
+      <option value='<?php echo $num;  ?>'><?php echo $cat ?></option>
+      <?php $num =$num+1; endforeach; ?>
      
     </select>
     </div>

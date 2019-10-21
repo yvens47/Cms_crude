@@ -1,10 +1,21 @@
 <?php
 session_start();
 require_once ("init.php");
-if (!$user->is_logged_in()) {
+
+require_once ABSPATH.'Core/Classes/admin.php';
+$admin = new Admin($db);
+if (!$user->is_logged_in() ) {
     header("location:/CMS_Crude/");
     exit();
 }
+
+if(!$admin->is_admin()){
+
+   header("location:/CMS_Crude/");
+    exit();
+}
+
+
 ?>
 
 
@@ -27,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
       if (isset($_FILES) && !empty($_FILES)) {
-        print_r($_POST);
+       
         $filename = $_FILES['file']['name'];
         $tmp_name = $_FILES['file']['tmp_name'];
         $dir = dirname(__FILE__);
@@ -55,8 +66,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class='col-md-3'>
          <?php //require_once("Template/member_left_sidebar.php"); ?>
 
-                  <div class="panel mt-5">
-                    <div class="panel-heading">Userst</div>
+                  <div class="panel mt-5" style='margin-top: 4.5rem!important;'>
+                    <div class="panel-heading">Users</div>
                     <div class="panel-body">
                         <ul class="list-group list-group-flush">
                              <li class="list-group-item"> <a href="?id=1"> <i class="material-icons icons">person_pin</i>All Users</a></li>
@@ -129,6 +140,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <!-- edit form --->
             </div>
           </div>
+          <?php elseif (isset($_GET['id']) && $_GET['id']== 2): ?>
+           <?php require_once("./Admin/form/edit-user-form.php"); ?>
+
+
+           <?php elseif (isset($_GET['id']) && $_GET['id']== 1): ?>
+           <p><?php echo "We currently have ".count($admin->users()). " users in the database" ?></p>
+
+           <table class="table table-striped">
+             <thead>
+               <th>Id</th>
+               <th>Full name</th>
+               <th>Member Since</th>
+               <th>User Role</th>
+             </thead>
+             <tbody>
+              <?php foreach ($admin->users() as $key=>$user): ?>
+                <tr>
+                  <?php $id = $user['user_id'];?>
+                  <td><?php echo $id ;?></td>
+                  <td><?php echo '<a href="http://localhost:8080/CMS_Crude/home.php?id=2&user='.$id.'">'.$user['user_full_name'].'<a/>'; ?></td>
+                  <td><?php echo $user['member_since'] ?></td>
+                  <td><?php echo ($user['user_role'] == 1)? "Admin": "Regular"; ?></td>
+                </tr>
+
+              <?php endforeach ?>
+
+             
+             </tbody>
+           </table>
+
+           
+         
               
 
          <?php else: ?>
@@ -156,7 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
          
               <tr class='record' v-for='post in postLists[0]'>
-              {{post}}
+             
                 <td> 
                 <div class="title-wrap">
                 {{post.article_title}}            
@@ -208,7 +251,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     
            
             <!-- left sidebar -->
-          <div class='col-md-2'>hello</div>
+          <div class='col-md-2'></div>
 
           <!-- left sidebar end here -->
          </div>
